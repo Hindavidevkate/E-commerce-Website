@@ -12,21 +12,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
-<body>
-    <h2>Your Cart</h2>
-     <div class="card" style="width: 18rem;">
-        
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-    <a href="checkout.html" class="btn btn-primary">Checkout</a>
-  </div>
-</div>
-    
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<body class="container mt-4">
 
-<div id="productList"></div>
-<div id="cart"></div>
+<h2 class="mb-4">🛒 Your Cart</h2>
+
+<div id="cart-items" class="row"></div>
+
+<h3 class="mt-4" id="total"></h3>
+
+<a href="checkout.html" class="btn btn-success mt-3">Proceed to Checkout</a>
+
+<script src="js/cart.js"></script>
 </body>
 </html>

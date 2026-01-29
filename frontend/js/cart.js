@@ -17,6 +17,11 @@ cart.forEach(item => {
                 <h5 class="card-title">${item.name}</h5>
                 <p>Price: ₹${item.price}</p>
                 <p>Quantity: ${item.quantity}</p>
+                <div class="d-flex justify-content-center align-items-center gap-2">
+                    <button class="btn btn-outline-danger" onclick="decreaseQty(${item.id})">➖</button>
+                    <span><b>${item.quantity}</b></span>
+                    <button class="btn btn-outline-success" onclick="increaseQty(${item.id})">➕</button>
+                </div>
                 <button class="btn btn-danger" onclick="removeFromCart(${item.id})">
                     Remove From Cart
                 </button>
@@ -37,5 +42,30 @@ function removeFromCart(productId) {
     localStorage.setItem("cart", JSON.stringify(cart));
 
     // Refresh page to update cart view
+    location.reload();
+}
+function increaseQty(productId) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let item = cart.find(i => i.id === productId);
+    item.quantity += 1;
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    location.reload();
+}
+
+function decreaseQty(productId) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let item = cart.find(i => i.id === productId);
+
+    if (item.quantity > 1) {
+        item.quantity -= 1;
+    } else {
+        // if quantity becomes 0 → remove item
+        cart = cart.filter(i => i.id !== productId);
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
     location.reload();
 }

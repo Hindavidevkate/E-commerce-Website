@@ -85,18 +85,8 @@
 
 </form>
 
-<script>
-function showQR() {
-  let paymentMethod = document.getElementById("Payment").value;
-  let qr = document.getElementById("myQR");
+<script src="js/checkout.js"></script>
 
-  if (paymentMethod === "COD") {
-    qr.style.display = "none";
-  } else {
-    qr.style.display = "block";
-  }
-}
-</script>
 
 </body>
 </html>

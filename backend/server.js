@@ -5,10 +5,14 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
+
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+//This 2 lines for order routes 
+const orderRoutes = require("./routes/orderRoutes");
+app.use(orderRoutes);
 
 //For mongoDB connection
 

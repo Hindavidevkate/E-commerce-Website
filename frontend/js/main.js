@@ -30,6 +30,7 @@ const products = [
 
 
 const list = document.getElementById("productList");
+const searchBox = document.getElementById("searchBox");
 
 products.forEach(p => {
 
@@ -66,3 +67,35 @@ function addToCart(productId){
     localStorage.setItem("cart",JSON.stringify(cart));
     alert(product.name+ "added to cart ");
 }
+
+//This logic is implemented for showing filtered element on the frontend 
+
+function displayProducts(items) {
+    list.innerHTML = "";  // clear old items
+
+    items.forEach((p, index) => {
+        list.innerHTML += `
+        <div class="card m-2" style="width:18rem">
+            <img src="${p.image}" class="card-img-top">
+            <div class="card-body">
+                <h5>${p.name}</h5>
+                <p>₹${p.price}</p>
+                <button class="btn btn-primary" onclick="addToCart(${index})">Add to Cart</button>
+            </div>
+        </div>`;
+    });
+}
+
+// Initial load
+displayProducts(products);
+
+//This Logic is used for search logic 
+searchBox.addEventListener("keyup", function () {
+    const value = searchBox.value.toLowerCase();
+
+    const filtered = products.filter(p =>
+        p.name.toLowerCase().includes(value)
+    );
+
+    displayProducts(filtered);
+});

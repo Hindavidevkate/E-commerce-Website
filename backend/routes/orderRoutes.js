@@ -23,4 +23,17 @@ router.post("/place-order", async (req, res) => {
     }
 });
 
+//This is for my orders get requests 
+
+// Get all orders
+router.get("/my-orders", async (req, res) => {
+    try {
+        const orders = await Order.find().sort({ date: -1 });
+        res.json(orders);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+
 module.exports = router;

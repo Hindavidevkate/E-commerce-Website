@@ -12,7 +12,9 @@ app.use(cors());
 app.use(express.json());
 //This 2 lines for order routes 
 const orderRoutes = require("./routes/orderRoutes");
-app.use(orderRoutes);
+app.use("/api/orders",orderRoutes);
+
+
 
 //For mongoDB connection
 
